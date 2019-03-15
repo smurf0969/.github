@@ -41,6 +41,8 @@ set -e
 if [ "$BUILDDOXYGEN" != "true" ]; then exit 0 ; fi
 cd $TRAVIS_BUILD_DIR
 
+echo "Downloading Doxygen..."
+
 # The default version of doxygen is too old so we'll use a modern version
 wget -q https://github.com/smurf0969/.github/raw/master/doxygen/doxygen-1.8.13.linux.bin.tar.gz
 tar -xf doxygen-1.8.13.linux.bin.tar.gz
