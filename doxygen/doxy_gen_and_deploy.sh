@@ -42,7 +42,7 @@ if [ "$BUILDDOXYGEN" != "true" ]; then exit 0 ; fi
 cd $TRAVIS_BUILD_DIR
 
 # The default version of doxygen is too old so we'll use a modern version
-wget -q https://github.com/smurf0969/.github/doxygen/doxygen-1.8.13.linux.bin.tar.gz
+wget -q https://github.com/smurf0969/.github/raw/master/doxygen/doxygen-1.8.13.linux.bin.tar.gz
 tar -xf doxygen-1.8.13.linux.bin.tar.gz
 mv doxygen-1.8.13/bin/doxygen .
 chmod +x doxygen
@@ -72,7 +72,7 @@ git config user.email "travis@travis-ci.org"
 shopt -s extglob
 if [ ! -f index.html ]; then
     rm -rf *
-    curl -SLs https://raw.githubusercontent.com/smurf0969/.github/master/doxy_index.html > index.html
+    curl -SLs https://raw.githubusercontent.com/smurf0969/.github/master/doxygen/doxy_index.html > index.html
 else
     # Don't fail if there's no files in the directory, just keep going!
     rm -r -- !(index.html) || true
@@ -93,7 +93,7 @@ if [ ! -f "$DOXYFILE" ]; then
     echo "Grabbing default Doxyfile"
     export DOXYFILE=${TRAVIS_BUILD_DIR}/Doxyfile
 
-    curl -SLs https://raw.githubusercontent.com/smurf0969/.github/master/Doxyfile.default > ${DOXYFILE}
+    curl -SLs https://raw.githubusercontent.com/smurf0969/.github/master/doxygen/Doxyfile.default > ${DOXYFILE}
     #sed -i "s/^INPUT .*/INPUT = ..\/../"  ${DOXYFILE}
 
     # If we can, fix up the name
