@@ -18,6 +18,9 @@ __AUTHOR__="Jeroen de Bruijn, modified by ladyada, modified by smurf0969"
 # Optional global variables:
 # - DOXYFILE            : The Doxygen configuration file.
 # - PRETTYNAME          : A string name of the project (for the doxy headers)
+# - DOXYPRJVERSION      : The version to show in doxy header
+# - DOXYPRJBRIEF        : The brief to show in the doxy header
+# - DOXYPRJLOGO         : The logo to display in the header
 #
 # For information on how to encrypt variables for Travis CI please go to
 # https://docs.travis-ci.com/user/environment-variables/#Encrypted-Variables
@@ -101,6 +104,18 @@ if [ ! -f "$DOXYFILE" ]; then
     # If we can, fix up the name
     if [ ! -z "$PRETTYNAME" ]; then
     sed -i "s/^PROJECT_NAME.*/PROJECT_NAME = \"${PRETTYNAME}\"/"  ${DOXYFILE}
+    fi
+    # if we can fix up the version
+    if [ ! -z "$DOXYPRJVERSION" ]; then
+    sed -i "s/^PROJECT_NUMBER.*/PROJECT_NUMBER = \"${DOXYPRJVERSION}\"/"  ${DOXYFILE}
+    fi
+    # if we can fix up the brief
+    if [ ! -z "$DOXYPRJBRIEF" ]; then
+    sed -i "s/^PROJECT_BRIEF.*/PROJECT_BRIEF = \"${DOXYPRJBRIEF}\"/"  ${DOXYFILE}
+    fi
+    # if we can fix up the logo
+    if [ ! -z "$DOXYPRJLOGO" ]; then
+    sed -i "s/^PROJECT_LOGO.*/PROJECT_LOGO = \"${DOXYPRJLOGO}\"/"  ${DOXYFILE}
     fi
 fi
 
