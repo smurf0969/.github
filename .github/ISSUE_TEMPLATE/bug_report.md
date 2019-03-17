@@ -15,7 +15,6 @@ simple and free of external dependencies as you can.
 
 ### Prerequisites
 
-* [ ] Can you reproduce the problem in safe mode?
 * [ ] Are you running the latest version?
 * [ ] Did a recent dependancy update cause the problem?
 * [ ] Are you reporting to the correct repository?
