@@ -114,9 +114,9 @@ if [ ! -f "$DOXYFILE" ]; then
     sed -i "s/^PROJECT_BRIEF.*/PROJECT_BRIEF = \"${DOXYPRJBRIEF}\"/"  ${DOXYFILE}
     fi
     # if we can fix up the logo
-    #if [ ! -z "$DOXYPRJLOGO" ]; then
-    #sed -i "s/^PROJECT_LOGO.*/PROJECT_LOGO = \"${DOXYPRJLOGO}\"/"  ${DOXYFILE}
-    #fi
+    if [ ! -z "$DOXYPRJLOGO" ]; then
+    sed -i "s/^PROJECT_LOGO.*/PROJECT_LOGO = ${DOXYPRJLOGO}/"  ${DOXYFILE}
+    fi
 fi
 
 sed -i "s;^HTML_OUTPUT .*;HTML_OUTPUT = code_docs/${TRAVIS_REPO_NAME}/html;"  ${DOXYFILE}
